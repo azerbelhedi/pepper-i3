@@ -1,22 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Switch } from "react-router-dom";
+import Login from "../auth/Login";
+import { StoreContext } from "../../App";
 
 export default function Routes() {
-  const online = false;
+  const { store, setStore } = useContext(StoreContext);
+  const { auth } = store;
+  const { online } = auth;
+
   return (
     <div className="routes-main-paper">
-      <Switch>
-        {!online ? (
-          <div>
+      {!online ? (
+        <div>
+          <Switch>
             <Route exact path="/auth/register">
               <h3>Register</h3>
             </Route>
             <Route exact path="/auth/login">
-              <h3>Login</h3>
+              <Login />
             </Route>
-          </div>
-        ) : (
-          <div>
+            <Route>
+              <Login />
+            </Route>
+          </Switch>
+        </div>
+      ) : (
+        <div>
+          <Switch>
             <Route exact path="/courses">
               <h3>courses</h3>
             </Route>
@@ -26,13 +36,12 @@ export default function Routes() {
             <Route exact path="/home">
               <h3>Home</h3>
             </Route>
-          </div>
-        )}
-
-        <Route path="/">
-          <h3>default redirect _ online ? home : login</h3>
-        </Route>
-      </Switch>
+            <Route>
+              <h3>Home</h3>
+            </Route>
+          </Switch>
+        </div>
+      )}
     </div>
   );
 }

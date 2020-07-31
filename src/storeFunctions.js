@@ -1,11 +1,18 @@
-export const setAlert = (
-  store,
-  setStore,
-  { display, text, button1: { text, action }, button2: { text, action } }
-) => {};
+// all store functions are calles here
 
-export const setNotification = (
-  store,
-  setStore,
-  { display, status, text }
-) => {};
+export const setLoginStore = (store, setStore, data) => {
+  //   setStore({ ...store, auth: { ...store.auth, online: true } });
+  setStore(() => {
+    let { auth } = store;
+    auth = {
+      ...auth,
+      online: true,
+      token: data.token,
+      userId: data.userId,
+      tokenExpiration: data.tokenExpiration,
+    };
+    console.log(auth);
+    store.auth = auth;
+    return { ...store };
+  });
+};

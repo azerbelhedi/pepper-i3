@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./menu.css";
+import { StoreContext } from "../../App";
 
 export default function Menu() {
-  const online = false;
+  const { store, setStore } = useContext(StoreContext);
+	const { auth } = store;
+	const { online } = auth
+
   return (
     <div className="menu-container">
       <div className="links">
