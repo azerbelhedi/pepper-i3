@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./menu.css";
 import { StoreContext } from "../../App";
+import { logoutStore } from "../../storeFunctions";
 
 export default function Menu() {
   const { store, setStore } = useContext(StoreContext);
-	const { auth } = store;
-	const { online } = auth
+  const { auth } = store;
+  const { online } = auth;
 
   return (
     <div className="menu-container">
@@ -24,7 +25,16 @@ export default function Menu() {
           </div>
         )}
       </div>
-      {online ? <button className="logout-button">Logout</button> : null}
+      {online ? (
+        <button
+          className="logout-button"
+          onClick={() => {
+            logoutStore(store, setStore, {});
+          }}
+        >
+          Logout
+        </button>
+      ) : null}
     </div>
   );
 }

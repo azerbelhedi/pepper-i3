@@ -38,6 +38,10 @@ export default function Login() {
     if (data) {
       console.log(data.login);
       setLoginStore(store, setStore, data.login);
+      // save to local storage
+      localStorage.setItem("AUTH_TOKEN", data.login.token);
+      localStorage.setItem("TOKEN_EXPIRATION", data.login.tokenExpiration);
+
       return <div>connected</div>;
     }
   }

@@ -16,3 +16,15 @@ export const setLoginStore = (store, setStore, data) => {
     return { ...store };
   });
 };
+
+export const logoutStore = (store, setStore, data) => {
+  localStorage.removeItem("AUTH_TOKEN");
+  localStorage.removeItem("TOKEN_EXPIRATION");
+
+  setStore(() => {
+    let { auth } = store;
+    auth = { ...auth, online: false, token: "", tokenExpiration: 0 };
+    store.auth = auth;
+    return { ...store };
+  });
+};
