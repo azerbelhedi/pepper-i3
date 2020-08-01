@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import Login from "../auth/Login";
 import { StoreContext } from "../../App";
+import Register from "../auth/Register";
 
 export default function Routes() {
   const { store, setStore } = useContext(StoreContext);
@@ -14,7 +15,7 @@ export default function Routes() {
         <div>
           <Switch>
             <Route exact path="/auth/register">
-              <h3>Register</h3>
+              <Register />
             </Route>
             <Route exact path="/auth/login">
               <Login />
