@@ -28,3 +28,19 @@ export const logoutStore = (store, setStore, data) => {
     return { ...store };
   });
 };
+
+export const closeAlert = (store, setStore) => {
+  setStore(() => {
+    let { alert } = store;
+    alert.display = false;
+    store.alert = alert;
+    return { ...store };
+  });
+};
+
+export const displayAlert = (store, setStore, alert) => {
+  setStore(() => {
+    store.alert = alert;
+    return { ...store };
+  });
+};

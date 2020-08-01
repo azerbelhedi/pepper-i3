@@ -2,7 +2,8 @@ import React, { useState, createContext } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./components/routes/Routes";
 import Menu from "./components/menu/Menu";
-import { setLoginStore } from "./storeFunctions";
+import { setLoginStore, closeAlert, logoutStore } from "./storeFunctions";
+import Alert from "./components/alert/Alert";
 
 export const StoreContext = createContext();
 
@@ -34,6 +35,7 @@ function App() {
         <Router>
           <Menu />
           <Routes />
+          <Alert />
         </Router>
       </StoreContext.Provider>
     </div>
@@ -48,7 +50,12 @@ const storeData = {
     email: "",
     userId: "",
   },
-  alert: {},
+  alert: {
+    display: false,
+    text: "",
+    button1: { text: "", action: () => {} },
+    button2: { text: "", action: () => {} },
+  },
   notification: {},
   currentMenu: "home",
 };
