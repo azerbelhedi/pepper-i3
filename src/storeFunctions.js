@@ -27,6 +27,8 @@ export const logoutStore = (store, setStore, data) => {
     store.auth = auth;
     return { ...store };
   });
+
+  fireNotification(store, setStore, { text: "logged out", time: 4 });
 };
 
 export const closeAlert = (store, setStore) => {
@@ -43,4 +45,24 @@ export const displayAlert = (store, setStore, alert) => {
     store.alert = alert;
     return { ...store };
   });
+};
+
+export const fireNotification = (store, setStore, { text, time }) => {
+  console.log("noti");
+  console.log(text);
+  setStore(() => {
+    let { notification } = store;
+    notification = { ...notification, text: text, display: true };
+    store.notification = notification;
+    return { ...store };
+  });
+
+  setTimeout(() => {
+    setStore(() => {
+      let { notification } = store;
+      notification = { ...notification, display: false };
+      store.notification = notification;
+      return { ...store };
+    });
+  }, time * 1000);
 };

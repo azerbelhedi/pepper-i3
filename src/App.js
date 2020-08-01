@@ -4,6 +4,7 @@ import Routes from "./components/routes/Routes";
 import Menu from "./components/menu/Menu";
 import { setLoginStore, closeAlert, logoutStore } from "./storeFunctions";
 import Alert from "./components/alert/Alert";
+import Notification from "./components/notification/Notification";
 
 export const StoreContext = createContext();
 
@@ -36,6 +37,7 @@ function App() {
           <Menu />
           <Routes />
           <Alert />
+          <Notification/>
         </Router>
       </StoreContext.Provider>
     </div>
@@ -56,7 +58,10 @@ const storeData = {
     button1: { text: "", action: () => {} },
     button2: { text: "", action: () => {} },
   },
-  notification: {},
+  notification: {
+    display : false,
+    text : ""
+  },
   currentMenu: "home",
 };
 

@@ -1,0 +1,17 @@
+.notification-container {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  min-width: 200px;
+  height: 30px;
+  background-color: rgb(60, 131, 2);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.notification-container > .notification-text {
+  color: black;
+  margin : 5px 5px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
